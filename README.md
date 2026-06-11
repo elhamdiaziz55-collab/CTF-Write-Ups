@@ -1,2 +1,2 @@
 # CTF-Write-Ups
-TryHackMe write ups focused on SOC operations 
+Resolving TryHackme CTFs focused on SOC operations 
