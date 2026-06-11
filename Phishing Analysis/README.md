@@ -1,1 +1,1 @@
-# Log Analysis CTF Write-Ups
+# Phishing Analysis CTF Write-Ups
