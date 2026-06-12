@@ -160,14 +160,18 @@ vol -f WKSTN-2961.raw windows.netscan.NetScan
 
 ### 12. What is the full file path of the malicious process used to establish the C2 connection?
 
+We use "vol -f WKSTN-2961.raw windows.cmdline.CmdLine"  to get the complete commandLine and arguments for each process .  
+
+![Using md5sum command to compute the md5 hash](images/Capture%20d’écran%202026-06-12%20071717.png)  
 **Answer:** `C:\Windows\Tasks\updater.exe`
 
 ---
 
 ### 13. What is the IP address and port of the C2 connection initiated by the malicious binary?
 
-From the network scan output, the attacker uses HTTP tunneling over port 8080 to communicate with `updater.exe`.
+From the network scan output, the attacker uses HTTP tunneling over port 8080 to communicate with `updater.exe`.  
 
+![Using md5sum command to compute the md5 hash](images/Capture%20d’écran%202026-06-12%20062344.png)  
 **Answer:** `128.199.95.189:8080`
 
 ---
@@ -191,6 +195,8 @@ We use the `strings` command on the memory dump and grep for `schtasks`, since `
 ```bash
 strings WKSTN-2961.raw | grep -i "schtasks"
 ```
+
+![Using md5sum command to compute the md5 hash](images/Capture%20d’écran%202026-06-12%20073814.png)  
 
 The attacker implanted a scheduled task shortly after establishing the C2 callback.
 
