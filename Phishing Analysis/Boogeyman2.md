@@ -177,16 +177,3 @@ schtasks /Create /F /SC DAILY /ST 09:00 /TN Updater /TR 'C:\Windows\System32\Win
 ```
 
 This command creates a daily scheduled task named `Updater` that silently runs a PowerShell one-liner. The script reads a Base64-encoded payload from the registry key `HKCU:\Software\Microsoft\Windows\CurrentVersion` (value: `debug`) and executes it in memory using `IEX` (Invoke-Expression) — a classic fileless persistence technique.
-
----
-
-## Summary
-
-| Stage | Description |
-|---|---|
-| Initial Access | Phishing email with a malicious `.doc` attachment |
-| Execution | VBA macro auto-runs on document open (`AutoOpen`) |
-| Stage 2 Download | `wscript.exe` downloads and runs `update.js` |
-| Binary Deployment | `update.js` downloads and executes `updater.exe` |
-| C2 Communication | `updater.exe` connects to `128.199.95.189:8080` |
-| Persistence | Scheduled task runs a fileless PowerShell payload daily |
