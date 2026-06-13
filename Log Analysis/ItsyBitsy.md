@@ -89,4 +89,7 @@ Navigating to `https://pastebin.com/yTg0Ah6a` in a browser displays the content 
 
 ---
 
+## Room Link
+
+[ItsyBitsy — TryHackMe](https://tryhackme.com/room/itsybitsy)
 
