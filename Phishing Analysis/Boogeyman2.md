@@ -49,7 +49,7 @@ The attachment is a Word document encoded in Base64. It can be decoded using Cyb
 ---
 
 ### 4. What is the MD5 hash of the malicious document?
-![Using md5sum command to compute the md5 hash](images/Capture%20d’écran%202026-06-11%20201711.png)  
+![](images/Capture%20d’écran%202026-06-11%20201711.png)  
 **Answer:** `52c4384a0b9e248b95804352ebec6c5b`
 
 ---
@@ -61,7 +61,7 @@ To analyze the macro, we use **olevba**, a tool from the `oletools` suite that e
 ```bash
 olevba ~/Downloads/download.doc
 ```
-![Using md5sum command to compute the md5 hash](images/Capture%20d’écran%202026-06-11%20210954.png)  
+![](images/Capture%20d’écran%202026-06-11%20210954.png)  
 The output reveals two VBA macros: `ThisDocument.cls` (empty) and `NewMacros.bas`. The `NewMacros.bas` module contains the malicious script.
 
 **How the vba script works:**
@@ -95,7 +95,7 @@ To find the process ID of `wscript.exe`, we use the `windows.pslist.PsList` Vola
 ```bash
 vol -f WKSTN-2961.raw windows.pslist.PsList
 ```
-![Using md5sum command to compute the md5 hash](images/Capture%20d’écran%202026-06-11%20213146.png)  
+![](images/Capture%20d’écran%202026-06-11%20213146.png)  
 
 The output confirms the following process chain:
 
@@ -138,8 +138,8 @@ vol -f WKSTN-2961.raw windows.dumpfiles --virtaddr 0xe58f836edc60
 
 This extracts the file from memory and saves it locally as a `.dat` file.
 
-![Using md5sum command to compute the md5 hash](images/Capture%20d’écran%202026-06-11%20220821.png)  
-![Using md5sum command to compute the md5 hash](images/Capture%20d’écran%202026-06-11%20221813.png)  
+![](images/Capture%20d’écran%202026-06-11%20220821.png)  
+![](images/Capture%20d’écran%202026-06-11%20221813.png)  
 
 **Answer:** `https://files.boogeymanisback.lol/aa2a9c53cbb80416d3b47d85538d9971/update.exe`
 
@@ -152,7 +152,7 @@ We scan all network connections and filter for activity related to `updater.exe`
 ```bash
 vol -f WKSTN-2961.raw windows.netscan.NetScan
 ```
-![Using md5sum command to compute the md5 hash](images/Capture%20d’écran%202026-06-12%20062344.png)  
+![](images/Capture%20d’écran%202026-06-12%20062344.png)  
 
 **Answer:** `6216`
 
@@ -162,7 +162,7 @@ vol -f WKSTN-2961.raw windows.netscan.NetScan
 
 We use "vol -f WKSTN-2961.raw windows.cmdline.CmdLine"  to get the complete commandLine and arguments for each process .  
 
-![Using md5sum command to compute the md5 hash](images/Capture%20d’écran%202026-06-12%20071717.png)  
+![](images/Capture%20d’écran%202026-06-12%20071717.png)  
 **Answer:** `C:\Windows\Tasks\updater.exe`
 
 ---
@@ -207,3 +207,7 @@ schtasks /Create /F /SC DAILY /ST 09:00 /TN Updater /TR 'C:\Windows\System32\Win
 ```
 
 This command creates a daily scheduled task named `Updater` that silently runs a PowerShell one-liner. The script reads a Base64-encoded payload from the registry key `HKCU:\Software\Microsoft\Windows\CurrentVersion` (value: `debug`) and executes it in memory using `IEX` (Invoke-Expression) — a classic fileless persistence technique.
+
+## Room Link
+
+[boogeyman3 — TryHackMe](https://tryhackme.com/room/boogeyman3)
