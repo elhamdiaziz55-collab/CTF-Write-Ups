@@ -210,4 +210,4 @@ This command creates a daily scheduled task named `Updater` that silently runs a
 
 ## Room Link
 
-[boogeyman3 — TryHackMe](https://tryhackme.com/room/boogeyman3)
+[boogeyman2 — TryHackMe](https://tryhackme.com/room/boogeyman2)
