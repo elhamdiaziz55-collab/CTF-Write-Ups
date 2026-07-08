@@ -90,7 +90,7 @@ NT AUTHORITY\SYSTEM;"C:\Windows\system32\schtasks.exe" /Run /TN OUTSTANDING_GUTT
 
 By filtering for DNS queries initiated by the malicious executable, I identified a second ngrok address used for command-and-control (C2) communication.
 
-![](images/Capture%20d’écran%202026-06-11%20201711.png)  
+![](images/Capture%20d’écran%202026-07-08%20081118.png)  
 
 **Answer:** `hxxp[://]9030-181-215-214-32[.]ngrok[.]io`
 
@@ -108,9 +108,11 @@ index=* "*.ps*" AND "*C:\\Windows\\Temp\\*"
 
 ---
 
-### 8. Identifying the True Name of the Malicious Script
+### 8. Identifying the Original Name of the Malicious Script
 
 The file `script.ps1` appeared to have been renamed to something generic, likely to evade detection. To determine its original identity, I extracted its file hash from Splunk and submitted it to **VirusTotal** for threat intelligence lookup.
+
+![](images/Capture%20d’écran%202026-07-08%20083635.png)
 
 **Answer:** `BlackSun.ps1`
 
