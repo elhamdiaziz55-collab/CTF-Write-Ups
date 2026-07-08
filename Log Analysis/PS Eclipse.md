@@ -113,6 +113,7 @@ index=* "*.ps*" AND "*C:\\Windows\\Temp\\*"
 The file `script.ps1` appeared to have been renamed to something generic, likely to evade detection. To determine its original identity, I extracted its file hash from Splunk and submitted it to **VirusTotal** for threat intelligence lookup.
 
 ![](images/Capture%20d’écran%202026-07-08%20083635.png)
+![](images/Capture%20d’écran%202026-07-08%20091321.png)
 
 **Answer:** `BlackSun.ps1`
 
@@ -122,6 +123,8 @@ The file `script.ps1` appeared to have been renamed to something generic, likely
 
 Examining the directory where the script executed revealed several files with their extensions changed to `.BlackSun` — confirming that ransomware encryption had occurred following execution of `script.ps1`. A ransom note was also dropped in the same directory.
 
+![](images/Capture%20d’écran%202026-07-08%20084801.png)
+
 **Answer:** `C:\Users\keegan\Downloads\vasg6b0wmw029hd\BlackSun_README.txt`
 
 ---
@@ -129,6 +132,8 @@ Examining the directory where the script executed revealed several files with th
 ### 10. Desktop Wallpaper Replacement Image
 
 The script also modified the victim's desktop wallpaper as a visual indicator of compromise (IOC).
+
+![](images/images/Capture%20d’écran%202026-07-08%20085258.png)
 
 **Answer:** `C:\Users\Public\Pictures\blacksun.jpg`
 
@@ -154,14 +159,6 @@ The script also modified the victim's desktop wallpaper as a visual indicator of
 4. The binary retrieved and executed a second-stage PowerShell script (`script.ps1`, actually `BlackSun.ps1`) from the same directory.
 5. The script communicated with a separate ngrok-hosted C2 server, encrypted files on disk (renaming them with a `.BlackSun` extension), dropped a ransom note, and replaced the desktop wallpaper to notify the victim.
 
-## Lessons Learned / Recommendations
+## Room Link
 
-- Monitor and alert on the use of `-enc` (encoded) PowerShell commands, as these are frequently used to obfuscate malicious payloads.
-- Treat any command that disables Windows Defender (`Set-MpPreference -DisableRealtimeMonitoring`) as a high-severity alert.
-- Flag outbound connections to ngrok domains (`*.ngrok.io`), as they are commonly abused for malware delivery and C2 infrastructure.
-- Monitor scheduled task creation, especially tasks configured to run with `SYSTEM` privileges or triggered by unusual event conditions.
-- Maintain offline, immutable backups to reduce the impact of ransomware encryption.
-
----
-
-*This write-up documents a hands-on SOC investigation lab completed as part of my cybersecurity training and portfolio.*
+[PS Eclipse — TryHackMe](https://tryhackme.com/room/posheclipse)
