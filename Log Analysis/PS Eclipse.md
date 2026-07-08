@@ -68,7 +68,7 @@ The `CommandLine` field showed that PowerShell was responsible for the download.
 
 ---
 
-### 4. Command Used to Configure Persistence / Elevated Execution
+### 4. Command Used to Configure Persistence / Elevated privileges for Execution
 
 **Answer:**
 ```
@@ -89,6 +89,8 @@ NT AUTHORITY\SYSTEM;"C:\Windows\system32\schtasks.exe" /Run /TN OUTSTANDING_GUTT
 ### 6. Remote Server Contacted by the Binary
 
 By filtering for DNS queries initiated by the malicious executable, I identified a second ngrok address used for command-and-control (C2) communication.
+
+![](images/Capture%20d’écran%202026-06-11%20201711.png)  
 
 **Answer:** `hxxp[://]9030-181-215-214-32[.]ngrok[.]io`
 
