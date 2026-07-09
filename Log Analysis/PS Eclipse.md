@@ -1,8 +1,5 @@
 # SOC Investigation: Ransomware Attack on Keegan's Machine
 
-**Platform:** TryHackMe (simulated as "TryNotHackMe" MSSP scenario)
-**Role:** SOC Analyst
-**Tools Used:** Splunk, CyberChef, VirusTotal
 
 ## Scenario
 
